@@ -1,0 +1,16 @@
+{% extends 'recipes/home.html' %}
+{% block content %}
+<div class="recipe">
+    {% if recipe.created_at %}
+    <div class="date">
+        {{ recipe.created_at }}
+    </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'recipe_edit' pk=recipe.pk %}"><span
+            class="glyphicon glyphicon-pencil"></span></a>
+    {% endif %}
+    <h2>{{ recipe.title }}</h2>
+    <p>{{ recipe.description|linebreaksbr }}</p>
+</div>
+{% endblock %}
