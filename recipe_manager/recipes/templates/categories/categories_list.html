@@ -1,16 +1,12 @@
 {% extends 'recipes/home.html' %}
 {% block content %}
-{% for recipe in recipes %}
 <div>
     <h1>Welcome to Recipe Manager</h1>
     <p>Please take a while and familiarize yourself with available recipes grouped by categories:</p>
 </div>
+{% for category in categories %}
 <div class="recipe">
-    <div class="date">
-        {{ recipe.created_at }}
-    </div>
-    <h2><a href="{% url 'recipe_detail' pk=recipe.pk %}">{{ recipe.title }}</a></h2>
-    <p>{{ recipe.description|linebreaksbr }}</p>
+    <h3><a href="{% url 'category_detail' pk=category.pk %}">{{ category.name }}</a></h3>
 </div>
 {% endfor %}
 {% endblock %}

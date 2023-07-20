@@ -21,8 +21,8 @@ class Recipe(models.Model):
     title = models.CharField(max_length=100, db_comment="The title of the recipe.")
     description = models.TextField(db_comment="A description or instructions for the recipe.")
     chef = models.ForeignKey(Chef, on_delete=models.CASCADE, db_comment="The chef who created the recipe.")
-    ingredients = models.ManyToManyField(Ingredient, db_comment="The ingredients required for the recipe.")
-    categories = models.ManyToManyField(Category, db_comment="The categories to which the recipe belongs.")
+    ingredients = models.ManyToManyField(Ingredient)
+    categories = models.ManyToManyField(Category)
     created_at = models.DateTimeField(auto_now_add=True, db_comment="The timestamp when the recipe was created.")
 
     def __str__(self):

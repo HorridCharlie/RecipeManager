@@ -1,16 +1,22 @@
 {% extends 'recipes/home.html' %}
 {% block content %}
-{% for recipe in recipes %}
 <div>
     <h1>Welcome to Recipe Manager</h1>
     <p>Please take a while and familiarize yourself with available recipes:</p>
 </div>
+{% for recipe in recipes %}
 <div class="recipe">
+    <h3><a href="{% url 'recipe_detail' pk=recipe.pk %}">{{ recipe.title }}</a></h3>
+    <p>Used ingredients: {{ recipe.ingredients.all }}</p>
+    {% for category in categories%}
+    <p>Recipe belongs to category:</p> <h6><a href="{% url 'category_detail' pk=category.pk %}">{{ recipe.categories.all }}</a></h6>
+    {% endfor %}
+    {% for chef in chefs %}
+    <p>Author chef of this recipe:</p> <h5><a href="{% url 'chef_detail' pk=chef.pk %}">{{ recipe.chef.name }}</a></h5>
+    {% endfor %}
     <div class="date">
         {{ recipe.created_at }}
     </div>
-    <h2><a href="{% url 'recipe_detail' pk=recipe.pk %}">{{ recipe.title }}</a></h2>
-    <p>{{ recipe.description|linebreaksbr }}</p>
-</div>
+    </div>
 {% endfor %}
 {% endblock %}

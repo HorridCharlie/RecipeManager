@@ -1,6 +1,3 @@
-from .category_view import category
-from .chef_view import chef
-from .recipes_view import recipes_list
-from .recipes_view import recipe_detail
-from .recipes_view import recipe_new
-from .recipes_view import recipe_edit
+from .categories_view import (categories_list, category_detail, category_new, category_edit)
+from .chefs_view import (chefs_list, chef_detail, chef_new, chef_edit)
+from .recipes_view import (recipes_list, recipe_detail, recipe_new, recipe_edit)
